@@ -1,0 +1,11 @@
+{
+  "parser": "babel-eslint",
+  "extends": "@infinumjs/eslint-config-react",
+  "rules": {
+    "react/react-in-jsx-scope": [0],
+    "react/jsx-one-expression-per-line": [0],
+    "react/jsx-max-props-per-line": [0],
+    "import/no-named-as-default": [0],
+    "import/no-named-as-default-member": [0]
+  }
+}
