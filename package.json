@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.21",
+    "isomorphic-fetch": "^2.2.1",
     "mobx": "^5.14.0",
     "mobx-react": "^6.1.3",
     "next": "^9.1.1",
