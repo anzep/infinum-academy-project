@@ -11,9 +11,7 @@ function Index() {
 
   return (
     <div>
-      {value && value.data.map(
-        (show, i) => <div key={i}>{show.title} <img src={`https://api.infinum.academy${show.imageUrl}`}/>{show.likesCount} </div>
-      )}
+      {value && value.data.map((show) => <div key={show._id}>{show.title} <img src={`https://api.infinum.academy${show.imageUrl}`} alt='cover of the show' />{show.likesCount} </div>)}
     </div>
   );
 }
