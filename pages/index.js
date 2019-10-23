@@ -11,31 +11,9 @@ function Index() {
 
   return (
     <div>
-      <div>
-        {value && value.data[0].title}
-        {value && value.data[0].imageUrl}
-        {value && value.data[0].likesCount}
-      </div>
-      <div>
-        {value && value.data[1].title}
-        {value && value.data[1].imageUrl}
-        {value && value.data[1].likesCount}
-      </div>
-      <div>
-        {value && value.data[2].title}
-        {value && value.data[2].imageUrl}
-        {value && value.data[2].likesCount}
-      </div>
-      <div>
-        {value && value.data[3].title}
-        {value && value.data[3].imageUrl}
-        {value && value.data[3].likesCount}
-      </div>
-      <div>
-        {value && value.data[4].title}
-        {value && value.data[4].imageUrl}
-        {value && value.data[4].likesCount}
-      </div>
+      {value && value.data.map(
+        (show, i) => <div key={i}>{show.title} <img src={`https://api.infinum.academy${show.imageUrl}`}/>{show.likesCount} </div>
+      )}
     </div>
   );
 }
