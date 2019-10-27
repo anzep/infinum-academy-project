@@ -1,9 +1,9 @@
+import header from '../components/header-logo';
+
 function Register() {
   return (
     <div>
-      <div>
-        header
-      </div>
+      {header()}
       <div>
         body
       </div>
