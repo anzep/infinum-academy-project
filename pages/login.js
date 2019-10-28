@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 
 import header from '../components/header-logo';
+import login from '../components/login';
 
 
 const container = css`
@@ -15,15 +16,27 @@ const itemA = css`
   grid-row-end: 3;
 `;
 
+const inputUser = css`
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #FF7BA3;
+  font: bold italic large serif;
+`;
+
 function Login() {
   return (
     <div css={container}>
       {header()}
       <div css={itemA}>
-        <h1>My email addres is</h1>
-        <h1>!tukaj bo za vpis maila!</h1>
-        <h1>and my password will be</h1>
-        <h1>!tu pa bo vnos gesla!</h1>
+        <h1>My username is</h1>
+        <input type='text' name='username' css={inputUser} />
+        <h1>and my password is</h1>
+        <input type='text' name='password' />
+        <div>
+          <input type='checkbox' name='remember' />
+          <label htmlFor='checkbox'>Remember me</label>
+        </div>
+        <button onClick={login}>Log in</button>
       </div>
       <div>
         footer

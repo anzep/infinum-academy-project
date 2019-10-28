@@ -2,7 +2,6 @@ import { css } from '@emotion/core';
 
 const headerDiv = css`
   display: flex;
-  justify-content: center;
 `;
 
 const headerImg = css`
@@ -11,7 +10,7 @@ const headerImg = css`
 
 function header() {
   return (
-    <div css={headerDiv}>
+    <div>
       <img src='img-logo-horizontal@3x.png' alt='page logo' css={headerImg} />
     </div>
   );
