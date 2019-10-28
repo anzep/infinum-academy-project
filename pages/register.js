@@ -9,6 +9,7 @@ function registerNewUser(email.value) {
 }*/
 
 const container = css`
+  height: 800px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,7 +34,7 @@ function Register() {
         {/* <button onClick={registerNewUser}>Register</button> */}
       </div>
       <div>
-        footer
+        <h1>empty</h1>
       </div>
     </div>
   );
