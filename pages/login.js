@@ -69,7 +69,7 @@ function Login() {
       <div>
         <p>Still don&apos;t have an account?</p>
         <Link href='/register'>
-          <a>Register</a>
+          Register
         </Link>
       </div>
     </div>

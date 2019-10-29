@@ -1,5 +1,5 @@
-function register() {
-
+function registerNewUser() {
+  
 }
 
-export default register;
+export default registerNewUser;
