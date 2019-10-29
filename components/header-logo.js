@@ -9,11 +9,11 @@ const headerImg = css`
   height: 20px;
 `;
 
-function header() {
+function Header() {
   return (
     <div css={headerDiv}>
       <img src='img-logo-horizontal@3x.png' alt='page logo' css={headerImg} />
     </div>
   );
 }
-export default header;
+export default Header;
