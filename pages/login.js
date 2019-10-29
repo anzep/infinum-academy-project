@@ -59,7 +59,7 @@ function Login() {
         <p>My username is</p>
         <input type='text' name='username' css={inputUser} />
         <p>and my password is</p>
-        <input type='text' name='password' css={inputPassword} />
+        <input type='password' name='password' css={inputPassword} />
         <div>
           <input type='checkbox' name='remember' />
           <label htmlFor='checkbox'>Remember me</label>
@@ -69,7 +69,7 @@ function Login() {
       <div>
         <p>Still don&apos;t have an account?</p>
         <Link href='/register'>
-          Register
+          <a>Register</a>
         </Link>
       </div>
     </div>
