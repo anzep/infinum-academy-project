@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-
+// a more to stran?
 const headerDiv = css`
   display: flex;
   justify-content: center;

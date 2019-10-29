@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import fetch from 'isomorphic-fetch';
 
-import Header from '../components/header-logo';
+import Header from '../components/Header';
 
 // import registerNewUser from '../components/registerNewUser';
 /*
@@ -47,7 +47,7 @@ function Register() {
   function onPasswordChange(e) {
     setPassword(e.target.value);
   }
-  
+  // to se lahko odstrani potem? ker kao že fatch to dela al neki
   function registerNewUser() {
     registerUser(email, password);
   }
