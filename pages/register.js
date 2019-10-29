@@ -3,12 +3,7 @@ import { css } from '@emotion/core';
 import fetch from 'isomorphic-fetch';
 
 import Header from '../components/Header';
-
-// import registerNewUser from '../components/registerNewUser';
-/*
-function registerNewUser(email.value) {
-  document.cookie = ""
-}*/
+import RegisterForm from '../components/RegisterForm';
 
 function registerUser(email, password) {
   fetch('https://api.infinum.academy/api/users', {
@@ -37,48 +32,15 @@ const form = css`
 `;
 
 function Register() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
 
-  function onEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  function onPasswordChange(e) {
-    setPassword(e.target.value);
-  }
-  // to se lahko odstrani potem? ker kao že fatch to dela al neki
-  function registerNewUser() {
-    registerUser(email, password);
-  }
 
   return (
     <div css={container}>
       <div>
         <Header />
       </div>
-      <div css={form}>
-        <div>
-          <h1>My email addres is</h1>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={onEmailChange}
-          />
-          <h1>and my password will be</h1>
-          <input
-            type="text"
-            name="password"
-            value={password}
-            onChange={onPasswordChange}
-          />
-          <div>
-            <input type="checkbox" name="remember" />
-            <label htmlFor="checkbox">Remember me</label>
-          </div>
-          <button onClick={registerNewUser}>Register</button>
-        </div>
+      <div>
+        <RegisterForm />
       </div>
     </div>
   );
