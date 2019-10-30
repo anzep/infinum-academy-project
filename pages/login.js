@@ -45,10 +45,10 @@ function loginUser(email, password) {
   })
     .then((res) => res.json())
     .then((data) => {
-      document.cookie = data;
-      console.log(data);
-      alert(document.cookie);
-      console.log(document.cookie);
+      document.cookie = data.data.token;
+
+      // to check cookie value:
+      // alert(document.cookie);
     });
 }
 
