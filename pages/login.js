@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import Link from 'next/link';
 
-import login from '../components/LoginForm';
+import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
 
 /* inputUser is for input elements, only bottom border, correct color, use it for everything*/
@@ -64,54 +64,20 @@ function loginUser(email, password) {
 
 
 function Login() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-  function onEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  function onPasswordChange(e) {
-    setPassword(e.target.value);
-  }
-  
-  function loginNewUser() {
-    loginUser(email, password);
-  }
 
   return (
     <div css={container}>
       <div>
         <Header />
       </div>
-      <div css={form}>
-        <div>
-          <h1>My email addres is</h1>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={onEmailChange}
-          />
-          <h1>and my password will be</h1>
-          <input
-            type="text"
-            name="password"
-            value={password}
-            onChange={onPasswordChange}
-          />
-          <div>
-            <input type="checkbox" name="remember" />
-            <label htmlFor="checkbox">Remember me</label>
-          </div>
-          <button onClick={loginNewUser}>LOGIN</button>
-        </div>
-        <div>
-          <p>Still don&apos;t have an account?</p>
-          <Link href='/register'>
-            <a>Register</a>
-          </Link>
-        </div>
+      <div>
+        <LoginForm onLogin={loginUser} />
+      </div>
+      <div>
+        <p>Still don&apos;t have an account?</p>
+        <Link href='/register'>
+          <a>Register</a>
+        </Link>
       </div>
     </div>
   );

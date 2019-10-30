@@ -32,9 +32,6 @@ const form = css`
 `;
 
 function Register() {
-  function onRegister(email, password) {
-    console.log(email, password);
-  }
   return (
 
     <div css={container}>
@@ -42,7 +39,7 @@ function Register() {
         <Header />
       </div>
       <div>
-        <RegisterForm onRegister={registerUser} />
+        <RegisterForm onRegister={registerUser} css={form} />
       </div>
     </div>
   );
