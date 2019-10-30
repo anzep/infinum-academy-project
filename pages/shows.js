@@ -19,18 +19,42 @@ const container = css`
 const form = css`
   flex: 1;
 
-  display: flex;
+  display: column;
+  padding: 5em;
   justify-content: center;
   align-items: center;
-  text-align: center;
 
   background-color: #F9F7F9;
-
 `;
 
 const footer = css`
   margin-top: 10px;
 
+`;
+
+/* form flex */
+
+const formContainer = css`
+  display: grid;
+  grid-template-columns: repeat(5, 10fr);
+  grid-gap: 15px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const formImg = css`
+  height: 200px;
+  width: 140px;
+`;
+
+const formP = css`
+  font-family: 'Verdana';
+  font-size: 13px;
+  color: #595959;
+`;
+
+const formH3 = css `
+  font-family: 'Verdana';
 `;
 
 /* END OF CSS RULES */
@@ -43,7 +67,6 @@ async function getShows() {
   appStore.shows.replace(shows);
 }
 
-
 function Shows() {
   const {loading} = useAsync(getShows);
 
@@ -53,13 +76,14 @@ function Shows() {
         <HeaderMain />
       </div>
       <div css={form}>
-        <div>
+        <h3 css={formH3}>All shows</h3>
+        <div css={formContainer}>
           {loading && <h1>Shows are loading...</h1>}
           {
             appStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
-                <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' />
-                <h1>{title}</h1>
+                <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
+                <p css={formP}>{title}</p>
               </div>
             ))
           }
