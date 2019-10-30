@@ -1,7 +1,12 @@
 import React from 'react';
+import {observer} from 'mobx-react';
 import { css } from '@emotion/core';
+import fetch from 'isomorphic-fetch';
+import {useAsync} from 'react-use';
+
 import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
+import appStore from '../store/AppStore';
 
 const container = css`
   height: 98vh; /* 100vh - body margin */
@@ -30,7 +35,17 @@ const footer = css`
 
 /* END OF CSS RULES */
 
+async function getShows() {
+  const shows = await fetch('https://api.infinum.academy/api/shows')
+    .then((response) => response.json())
+    .then(({ data = [] }) => data);
+
+  appStore.shows.replace(shows);
+}
+
+
 function Shows() {
+  const {loading} = useAsync(getShows);
 
   return (
     <div css={container}>
@@ -38,7 +53,17 @@ function Shows() {
         <HeaderMain />
       </div>
       <div css={form}>
-        form
+        <div>
+          {loading && <h1>Shows are loading...</h1>}
+          {
+            appStore.shows.map(({ _id, title, imageUrl }) => (
+              <div key={_id}>
+                <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' />
+                <h1>{title}</h1>
+              </div>
+            ))
+          }
+        </div>
       </div>
       <div css={footer}>
         <FooterMain />
@@ -47,4 +72,4 @@ function Shows() {
   );
 }
 
-export default Shows;
+export default observer(Shows);
