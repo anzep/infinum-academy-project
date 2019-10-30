@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import ButtonShowHide from './ButtonShowHide';
 
 /* CSS RULES */
 
@@ -47,17 +48,6 @@ const rememberMe = css`
   font-size: 15px;
 `;
 
-const showHideButton = css`
-  padding: 2px;
-  border: none;
-  background: none;
-  border-bottom: 2px solid #FF7BA3;
-`;
-const showHideButtonImg = css`
-  hight: 30px;
-  width: 30px;
-`;
-
 /* END OF CSS RULES */
 
 function LoginForm({ onLogin }) {
@@ -74,10 +64,6 @@ function LoginForm({ onLogin }) {
   
   function onLoginClick() {
     onLogin(email, password);
-  }
-
-  function showHide() {
-    document.getElementById('pwd').type = 'text';
   }
 
   return (
@@ -100,9 +86,7 @@ function LoginForm({ onLogin }) {
           css={inputPassword}
           id='pwd'
         />
-        <button onClick={showHide} css={showHideButton}>
-          <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
-        </button>
+        <ButtonShowHide />
       </form>
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
