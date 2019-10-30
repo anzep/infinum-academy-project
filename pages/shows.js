@@ -53,8 +53,13 @@ const formP = css`
   color: #595959;
 `;
 
-const formH3 = css `
+const formH3 = css`
   font-family: 'Verdana';
+`;
+
+const loadingP = css`
+  font-family: 'Verdana';
+  font-size: 30px;
 `;
 
 /* END OF CSS RULES */
@@ -78,7 +83,7 @@ function Shows() {
       <div css={form}>
         <h3 css={formH3}>All shows</h3>
         <div css={formContainer}>
-          {loading && <h1>Shows are loading...</h1>}
+          {loading && <p>Shows are loading...</p>}
           {
             appStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>

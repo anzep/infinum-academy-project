@@ -26,6 +26,7 @@ const form = css`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-bottom: 44px; // to preserve the same space on the page, as on the login
 `;
 
 /* END OF CSS RULES */
