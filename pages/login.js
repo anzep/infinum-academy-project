@@ -4,6 +4,8 @@ import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+/* CSS rules */
+
 const container = css`
   height: 98vh; /* 100vh - body margin */
   display: flex;
@@ -31,7 +33,7 @@ const footer = css`
   align-items: center;
 `;
 
-/* END OF CSS RULES */
+/* End of CSS rules */
 
 function loginUser(email, password) {
   fetch('https://api.infinum.academy/api/users/sessions', {

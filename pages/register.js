@@ -5,7 +5,8 @@ import fetch from 'isomorphic-fetch';
 import Header from '../components/Header';
 import RegisterForm from '../components/RegisterForm';
 
-/* CSS RULES */
+/* CSS rules */
+
 
 const container = css`
   height: 98vh; /* 100vh - body margin */
@@ -29,7 +30,7 @@ const form = css`
   padding-bottom: 44px; // to preserve the same space on the page, as on the login
 `;
 
-/* END OF CSS RULES */
+/* End of CSS rules */
 
 function registerUser(email, password) {
   fetch('https://api.infinum.academy/api/users', {

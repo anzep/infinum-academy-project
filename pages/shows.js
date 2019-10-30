@@ -8,6 +8,8 @@ import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
 import appStore from '../store/AppStore';
 
+/* CSS rules */
+
 const container = css`
   height: 98vh; /* 100vh - body margin */
   display: flex;
@@ -32,7 +34,7 @@ const footer = css`
 
 `;
 
-/* form flex */
+/* form with shows - flex/grid */
 
 const formContainer = css`
   display: grid;
@@ -62,7 +64,7 @@ const loadingP = css`
   font-size: 30px;
 `;
 
-/* END OF CSS RULES */
+/* End of CSS rules */
 
 async function getShows() {
   const shows = await fetch('https://api.infinum.academy/api/shows')
@@ -83,7 +85,7 @@ function Shows() {
       <div css={form}>
         <h3 css={formH3}>All shows</h3>
         <div css={formContainer}>
-          {loading && <p>Shows are loading...</p>}
+          {loading && <p css={loadingP}>Shows are loading...</p>}
           {
             appStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
