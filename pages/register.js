@@ -5,17 +5,7 @@ import fetch from 'isomorphic-fetch';
 import Header from '../components/Header';
 import RegisterForm from '../components/RegisterForm';
 
-function registerUser(email, password) {
-  fetch('https://api.infinum.academy/api/users', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
-  });
-}
+/* CSS RULES */
 
 const container = css`
   height: 98vh; /* 100vh - body margin */
@@ -35,7 +25,22 @@ const form = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
+
+/* END OF CSS RULES */
+
+function registerUser(email, password) {
+  fetch('https://api.infinum.academy/api/users', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      email, password,
+    }),
+  });
+}
 
 function Register() {
   return (

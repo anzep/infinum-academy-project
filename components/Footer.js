@@ -4,6 +4,8 @@ import { css } from '@emotion/core';
 const footer = css`
   font-family: 'Verdana';
   font-size: 10px;
+  align-items: center;
+  text-align: center;
 `;
 
 function Footer() {

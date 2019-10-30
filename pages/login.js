@@ -22,6 +22,7 @@ const form = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 const footer = css`
@@ -29,6 +30,8 @@ const footer = css`
   justify-content: center;
   align-items: center;
 `;
+
+/* END OF CSS RULES */
 
 function loginUser(email, password) {
   fetch('https://api.infinum.academy/api/users/sessions', {
@@ -40,13 +43,14 @@ function loginUser(email, password) {
       email, password,
     }),
   })
+    .then((res) => res.json())
     .then((data) => {
-      document.cookie = data.token;
-      console.log(data.token);
-      // alert(document.cookie);
+      document.cookie = data;
+      console.log(data);
+      alert(document.cookie);
+      console.log(document.cookie);
     });
 }
-
 
 function Login() {
 

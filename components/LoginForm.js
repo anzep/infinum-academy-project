@@ -25,6 +25,7 @@ const inputPassword = css`
   margin-bottom: 25px;
   color: #FF7BA3;
   font-size: 20px;
+  width: 234px;
 `;
 
 const buttonRemake = css`
@@ -35,13 +36,26 @@ const buttonRemake = css`
   border: 0;
   outline: 0;
   color: white;
-  border-radius: 10px;
+  border-radius: 30px;
   font-family: 'Verdana';
+  font-size: 14px;
+  letter-spacing: 3px;
 `;
 
 const rememberMe = css`
   font-family: 'Verdana';
   font-size: 15px;
+`;
+
+const showHideButton = css`
+  padding: 2px;
+  border: none;
+  background: none;
+  border-bottom: 2px solid #FF7BA3;
+`;
+const showHideButtonImg = css`
+  hight: 30px;
+  width: 30px;
 `;
 
 /* END OF CSS RULES */
@@ -62,6 +76,10 @@ function LoginForm({ onLogin }) {
     onLogin(email, password);
   }
 
+  function showHide() {
+    document.getElementById('pwd').type = 'text';
+  }
+
   return (
     <div css={mainDiv}>
       <p>My email address is</p>
@@ -73,13 +91,19 @@ function LoginForm({ onLogin }) {
         css={inputUser}
       />
       <p>and my password is</p>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={onPasswordChange}
-        css={inputPassword}
-      />
+      <form>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={onPasswordChange}
+          css={inputPassword}
+          id='pwd'
+        />
+        <button onClick={showHide} css={showHideButton}>
+          <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+        </button>
+      </form>
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
