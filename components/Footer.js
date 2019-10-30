@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 const footer = css`
   font-family: 'Verdana';
   font-size: 10px;
-  display: inline-flex;
 `;
 
 function Footer() {
