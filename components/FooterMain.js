@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import SocialMedia from './SocialMedia';
 
 const footerMain = css`
   display: flex-column;
@@ -11,10 +12,17 @@ const footerMain = css`
   padding-top: 50px: 
 `;
 
+const socialMediaLine = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const legalLinks = css`
   display: flex; 
   justify-content: flex-start;
 `;
+
 
 const footerP = css`
   margin-right: 20px;
@@ -28,8 +36,9 @@ const headerImg = css`
 function FooterMain() {
   return (
     <div css={footerMain}>
-      <div>
+      <div css={socialMediaLine}>
         <img src='img-logo-horizontal@3x.png' alt='page logo' css={headerImg} />
+        <SocialMedia />
       </div>
       <div css={legalLinks}>
         <p css={footerP}>About us</p>

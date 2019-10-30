@@ -24,7 +24,7 @@ const form = css`
 `;
 
 const footer = css`
-  margin-top: 20px;
+  margin-top: 10px;
 
 `;
 
