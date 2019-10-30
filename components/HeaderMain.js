@@ -1,5 +1,7 @@
 import { css } from '@emotion/core';
 
+/* CSS rules */
+
 const headerMain = css`
   display: flex;
   justify-content: space-between;
@@ -10,6 +12,8 @@ const headerMain = css`
 const headerImg = css`
   height: 20px;
 `;
+
+/* End of CSS rules */
 
 function HeaderMain() {
   return (

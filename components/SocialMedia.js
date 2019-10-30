@@ -1,5 +1,7 @@
 import { css } from '@emotion/core';
 
+/* CSS rules */
+
 const imgSM = css`
   width: 35px;
   hight: 35px;
@@ -10,6 +12,8 @@ const imgSM = css`
     filter: grayscale(0%);
   }
 `;
+
+/* End of CSS rules */
 
 function SocialMedia() {
   return (

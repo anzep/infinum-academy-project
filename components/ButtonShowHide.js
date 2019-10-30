@@ -1,5 +1,7 @@
 import { css } from '@emotion/core';
 
+/* CSS rules */
+
 const showHideButton = css`
   padding: 2px;
   border: none;
@@ -10,6 +12,8 @@ const showHideButtonImg = css`
   hight: 30px;
   width: 30px;
 `;
+
+/* End of CSS rules */
 
 function ButtonShowHide() {
   

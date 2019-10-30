@@ -48,7 +48,7 @@ const rememberMe = css`
   font-size: 15px;
 `;
 
-/* END OF CSS RULES */
+/* End of CSS rules */
 
 function LoginForm({ onLogin }) {
   const [email, setEmail] = React.useState('');

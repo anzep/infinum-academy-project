@@ -1,6 +1,8 @@
 import { css } from '@emotion/core';
 import SocialMedia from './SocialMedia';
 
+/* CSS rules */
+
 const footerMain = css`
   display: flex-column;
   justify-content: space-between;
@@ -32,6 +34,8 @@ const footerP = css`
 const headerImg = css`
   height: 20px;
 `;
+
+/* End of CSS rules */
 
 function FooterMain() {
   return (

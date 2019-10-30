@@ -1,8 +1,12 @@
 import { css } from '@emotion/core';
 
+/* CSS rules */
+
 const headerImg = css`
   height: 20px;
 `;
+
+/* End of CSS rules */
 
 function Header() {
   return (

@@ -49,7 +49,7 @@ const rememberMe = css`
   font-size: 15px;
 `;
 
-/* END OF CSS RULES */
+/* End of CSS rules */
 
 function RegisterForm({ onRegister }) {
   const [email, setEmail] = React.useState('');
