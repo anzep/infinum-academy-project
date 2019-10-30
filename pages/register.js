@@ -32,15 +32,17 @@ const form = css`
 `;
 
 function Register() {
-
-
+  function onRegister(email, password) {
+    console.log(email, password);
+  }
   return (
+
     <div css={container}>
       <div>
         <Header />
       </div>
       <div>
-        <RegisterForm />
+        <RegisterForm onRegister={registerUser} />
       </div>
     </div>
   );

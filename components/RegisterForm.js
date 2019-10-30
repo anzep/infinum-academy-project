@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-function RegisterForm({registerUser}) {
+function RegisterForm({ onRegister }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -13,8 +13,8 @@ function RegisterForm({registerUser}) {
     setPassword(e.target.value);
   }
 
-  function registerNewUser() {
-    registerUser(email, password);
+  function onRegisterClick() {
+    onRegister(email, password);
   }
 
   return (
@@ -38,7 +38,7 @@ function RegisterForm({registerUser}) {
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <button onClick={registerNewUser}>Register</button>
+      <button onClick={onRegisterClick}>Register</button>
     </div>
   );
 }
