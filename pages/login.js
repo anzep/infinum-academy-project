@@ -1,40 +1,8 @@
 import { css } from '@emotion/core';
-import Link from 'next/link';
 
 import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
-
-/* inputUser is for input elements, only bottom border, correct color, use it for everything*/
-const inputUser = css`
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #FF7BA3;
-  font-family: 'Verdana';
-  color: #FF7BA3;
-  font-size: 20px;
-`;
-
-const inputPassword = css`
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #FF7BA3;
-  font-family: 'Verdana';
-  margin-bottom: 15px;
-  color: #FF7BA3;
-  font-size: 20px;
-`;
-
-const buttonRemake = css`
-  margin-top: 30px;
-  background-color: #FF7BA3;
-  width: 150px;
-  height: 50px;
-  border: 0;
-  outline: 0;
-  color: white;
-  border-radius: 10px;
-  font-family: 'Verdana';
-`;
+import Footer from '../components/Footer';
 
 const container = css`
   height: 98vh; /* 100vh - body margin */
@@ -42,9 +10,21 @@ const container = css`
   flex-direction: column;
 `;
 
+const header = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const form = css`
   flex: 1;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const footer = css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +39,12 @@ function loginUser(email, password) {
     body: JSON.stringify({
       email, password,
     }),
-  });
+  })
+    .then((data) => {
+      document.cookie = data.token;
+      console.log(data.token);
+      // alert(document.cookie);
+    });
 }
 
 
@@ -67,17 +52,14 @@ function Login() {
 
   return (
     <div css={container}>
-      <div>
+      <div css={header}>
         <Header />
       </div>
-      <div>
+      <div css={form}>
         <LoginForm onLogin={loginUser} />
       </div>
-      <div>
-        <p>Still don&apos;t have an account?</p>
-        <Link href='/register'>
-          <a>Register</a>
-        </Link>
+      <div css={footer}>
+        <Footer />
       </div>
     </div>
   );
