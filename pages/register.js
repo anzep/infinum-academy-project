@@ -23,6 +23,12 @@ const container = css`
   flex-direction: column;
 `;
 
+const header = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const form = css`
   flex: 1;
 
@@ -35,10 +41,10 @@ function Register() {
   return (
 
     <div css={container}>
-      <div>
+      <div css={header}>
         <Header />
       </div>
-      <div>
+      <div css={form}>
         <RegisterForm onRegister={registerUser} css={form} />
       </div>
     </div>

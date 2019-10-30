@@ -64,7 +64,7 @@ function LoginForm({ onLogin }) {
 
   return (
     <div css={mainDiv}>
-      <p>My email is</p>
+      <p>My email address is</p>
       <input
         type="email"
         name="email"

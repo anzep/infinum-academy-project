@@ -1,6 +1,52 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
+/* CSS RULES */
+
+/* inputUser is for input elements, only bottom border, correct color, use it for everything*/
+const mainDiv = css`
+  font-family: 'Verdana';
+  font-size: 25px;
+`;
+
+const inputUser = css`
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #FF7BA3;
+  font-family: 'Verdana';
+  color: #FF7BA3;
+  font-size: 20px;
+`;
+
+const inputPassword = css`
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #FF7BA3;
+  font-family: 'Verdana';
+  margin-bottom: 25px;
+  color: #FF7BA3;
+  font-size: 20px;
+`;
+
+const buttonRemake = css`
+  margin-top: 30px;
+  background-color: #FF7BA3;
+  width: 150px;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  color: white;
+  border-radius: 10px;
+  font-family: 'Verdana';
+`;
+
+const rememberMe = css`
+  font-family: 'Verdana';
+  font-size: 15px;
+`;
+
+/* END OF CSS RULES */
+
 function RegisterForm({ onRegister }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -18,27 +64,28 @@ function RegisterForm({ onRegister }) {
   }
 
   return (
-    <div>
-      <h1>My email addres is</h1>
+    <div css={mainDiv}>
+      <p>My email address is</p>
       <input
-        type="text"
+        type="email"
         name="email"
         value={email}
         onChange={onEmailChange}
+        css={inputUser}
       />
-      <h1>and my password will be</h1>
+      <p>and my password will be</p>
       <input
-        type="text"
+        type="password"
         name="password"
         value={password}
         onChange={onPasswordChange}
+        css={inputPassword}
       />
-
-      <div>
+      <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <button onClick={onRegisterClick}>Register</button>
+      <button onClick={onRegisterClick} css={buttonRemake}>Register</button>
     </div>
   );
 }
