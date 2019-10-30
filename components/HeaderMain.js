@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
 
-const headerMain = css `
+const headerMain = css`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   font-family: 'Verdana';
