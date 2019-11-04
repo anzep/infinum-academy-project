@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import fetch from 'isomorphic-fetch';
+import {observer} from 'mobx-react';
 
 import Header from '../components/Header';
 import RegisterForm from '../components/RegisterForm';
@@ -57,4 +58,4 @@ function Register() {
     </div>
   );
 }
-export default Register;
+export default observer(Register);

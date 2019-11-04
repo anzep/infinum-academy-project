@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
 
 /* CSS rules */
 
@@ -23,4 +24,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default observer(Footer);

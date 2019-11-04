@@ -1,5 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
+
 import ButtonShowHide from './ButtonShowHide';
 
 /* CSS RULES */
@@ -98,4 +100,4 @@ function RegisterForm({ onRegister }) {
   );
 }
 
-export default RegisterForm;
+export default observer(RegisterForm);

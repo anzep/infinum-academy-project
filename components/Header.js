@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
 
 /* CSS rules */
 
@@ -15,4 +16,4 @@ function Header() {
     </div>
   );
 }
-export default Header;
+export default observer(Header);

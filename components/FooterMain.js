@@ -1,4 +1,6 @@
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
+
 import SocialMedia from './SocialMedia';
 
 /* CSS rules */
@@ -56,4 +58,4 @@ function FooterMain() {
   );
 }
 
-export default FooterMain;
+export default observer(FooterMain);

@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
 
 import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
@@ -70,4 +71,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default observer(Login);

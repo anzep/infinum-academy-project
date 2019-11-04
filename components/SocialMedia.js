@@ -1,5 +1,7 @@
 import { css } from '@emotion/core';
 
+import {observer} from 'mobx-react';
+
 /* CSS rules */
 
 const imgSM = css`
@@ -31,4 +33,4 @@ function SocialMedia() {
   );
 }
 
-export default SocialMedia;
+export default observer(SocialMedia);

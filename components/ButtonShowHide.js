@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
 
 /* CSS rules */
 
@@ -28,4 +29,4 @@ function ButtonShowHide() {
   );
 }
 
-export default ButtonShowHide;
+export default observer(ButtonShowHide);

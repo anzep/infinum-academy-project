@@ -1,4 +1,6 @@
 import { css } from '@emotion/core';
+import {observer} from 'mobx-react';
+
 import ButtonShowHide from './ButtonShowHide';
 
 /* CSS RULES */
@@ -97,4 +99,4 @@ function LoginForm({ onLogin }) {
   );
 }
 
-export default LoginForm;
+export default observer(LoginForm);
