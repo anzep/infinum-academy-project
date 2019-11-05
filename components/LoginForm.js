@@ -1,8 +1,6 @@
 import { css } from '@emotion/core';
 import {observer} from 'mobx-react';
 
-import ButtonShowHide from './ButtonShowHide';
-
 /* CSS RULES */
 
 /* inputUser is for input elements, only bottom border, correct color, use it for everything*/

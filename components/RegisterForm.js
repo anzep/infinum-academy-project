@@ -2,8 +2,6 @@ import React from 'react';
 import { css } from '@emotion/core';
 import {observer} from 'mobx-react';
 
-import ButtonShowHide from './ButtonShowHide';
-
 /* CSS RULES */
 
 /* inputUser is for input elements, only bottom border, correct color, use it for everything*/
@@ -51,11 +49,24 @@ const rememberMe = css`
   font-size: 15px;
 `;
 
+const showHideButton = css`
+  padding: 2px;
+  border: none;
+  background: none;
+  border-bottom: 2px solid #FF7BA3;
+`;
+const showHideButtonImg = css`
+  hight: 30px;
+  width: 30px;
+`;
+
 /* End of CSS rules */
 
 function RegisterForm({ onRegister }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+
+  const [passwordVisibility, setPasswordVisibility] = React.useState(false);
 
   function onEmailChange(e) {
     setEmail(e.target.value);
@@ -67,6 +78,12 @@ function RegisterForm({ onRegister }) {
 
   function onRegisterClick() {
     onRegister(email, password);
+  }
+
+  function showHide(e) {
+    e.preventDefault();
+
+    setPasswordVisibility(!passwordVisibility);
   }
 
   return (
@@ -82,14 +99,16 @@ function RegisterForm({ onRegister }) {
       <p>and my password will be</p>
       <form>
         <input
-          type="password"
+          type={passwordVisibility ? 'text' : 'password'}
           name="password"
           value={password}
           onChange={onPasswordChange}
           css={inputPassword}
           id='pwd'
         />
-        <ButtonShowHide />
+        <button onClick={showHide} css={showHideButton}>
+          <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+        </button>
       </form>
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
