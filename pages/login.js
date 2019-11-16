@@ -49,9 +49,6 @@ function loginUser(email, password) {
     .then((res) => res.json())
     .then((data) => {
       document.cookie = data.data.token;
-
-      // to check cookie value:
-      // alert(document.cookie);
     });
 }
 
