@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import {observer} from 'mobx-react';
+import Link from 'next/link';
 
 /* CSS RULES */
 
@@ -112,7 +113,9 @@ function LoginForm({ onLogin }) {
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <button onClick={onLoginClick} css={buttonRemake}>LOGIN</button>
+      <Link href='/shows'>
+        <button onClick={onLoginClick} css={buttonRemake}>LOGIN</button>
+      </Link>
     </div>
   );
 }
