@@ -71,7 +71,6 @@ function LoginForm({ onLogin }) {
   const [passwordVisibility, setPasswordVisibility] = React.useState(false);
 
   function onEmailChange(e) {
-    console.log(e.target.value);
     setEmail(e.target.value);
   }
 

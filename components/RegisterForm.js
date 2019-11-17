@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import {observer} from 'mobx-react';
+import useForm from 'react-hook-form';
 
 /* CSS RULES */
 
@@ -85,38 +86,89 @@ function RegisterForm({ onRegister }) {
 
     setPasswordVisibility(!passwordVisibility);
   }
+  
+  const { errors, register, handleSubmit } = useForm();
+
+  function onSubmit(data) {
+    console.log('logging you in...', data);
+  }
+
+  //   return (
+  //     <div css={mainDiv}>
+  //       <p>My email address is</p>
+  //       <input
+  //         type="email"
+  //         name="email"
+  //         value={email}
+  //         onChange={onEmailChange}
+  //         css={inputUser}
+  //       />
+  //       <p>and my password will be</p>
+  //       <form>
+  //         <input
+  //           type={passwordVisibility ? 'text' : 'password'}
+  //           name="password"
+  //           value={password}
+  //           onChange={onPasswordChange}
+  //           css={inputPassword}
+  //           id='pwd'
+  //         />
+  //         <button onClick={showHide} css={showHideButton}>
+  //           <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+  //         </button>
+  //       </form>
+  //       <div css={rememberMe}>
+  //         <input type="checkbox" name="remember" />
+  //         <label htmlFor="checkbox">Remember me</label>
+  //       </div>
+  //       <button onClick={onRegisterClick} css={buttonRemake}>REGISTER</button>
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div css={mainDiv}>
+    <form onSubmit={handleSubmit(onSubmit)} css={mainDiv}>
+      {/* <input
+        type="text"
+        name="name"
+        ref={register({
+          required: 'Name is required.',
+        })}
+      />
+      {errors.name && <span>{errors.name.message}</span>} */}
       <p>My email address is</p>
       <input
         type="email"
         name="email"
-        value={email}
-        onChange={onEmailChange}
         css={inputUser}
+        ref={register({
+          required: 'Required',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: 'invalid email address',
+          },
+        })}
+        onChange={onEmailChange}
       />
       <p>and my password will be</p>
-      <form>
-        <input
-          type={passwordVisibility ? 'text' : 'password'}
-          name="password"
-          value={password}
-          onChange={onPasswordChange}
-          css={inputPassword}
-          id='pwd'
-        />
-        <button onClick={showHide} css={showHideButton}>
-          <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
-        </button>
-      </form>
+      <input
+        type={passwordVisibility ? 'text' : 'password'}
+        name="password"
+        ref={register({})}
+        onChange={onPasswordChange}
+        css={inputPassword}
+      />
+      <button onClick={showHide} css={showHideButton}>
+        <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+      </button>
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <button onClick={onRegisterClick} css={buttonRemake}>REGISTER</button>
-    </div>
+      <input type="submit" onClick={onRegisterClick} css={buttonRemake} />
+    </form>
   );
 }
+
 
 export default observer(RegisterForm);
