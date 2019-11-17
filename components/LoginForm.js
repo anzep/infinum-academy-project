@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 import { observer } from 'mobx-react';
 import React from 'react';
 import useForm from 'react-hook-form';
+
 /* CSS RULES */
 
 /* inputUser is for input elements, only bottom border, correct color, use it for everything*/
@@ -94,41 +95,41 @@ function LoginForm({ onLogin }) {
     console.log('logging you in...', data);
   }
 
-//   return (
-//     <div css={mainDiv}>
-//       <p>My email address is</p>
-//       <input
-//         type="email"
-//         name="email"
-//         value={email}
-//         onChange={onEmailChange}
-//         css={inputUser}
-//       />
-//       <p>and my password is</p>
-//       <form>
-//         <input
-//           type={passwordVisibility ? 'text' : 'password'}
-//           name="password"
-//           value={password}
-//           onChange={onPasswordChange}
-//           css={inputPassword}
-//         />
-//         <button onClick={showHide} css={showHideButton}>
-//           <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
-//         </button>
-//       </form>
-//       <div css={rememberMe}>
-//         <input type="checkbox" name="remember" />
-//         <label htmlFor="checkbox">Remember me</label>
-//       </div>
-//       <Link href='/shows'>
-//         <button onClick={onLoginClick} css={buttonRemake}>LOGIN</button>
-//       </Link>
-//     </div>
-//   );
-// }
+  //   return (
+  //     <div css={mainDiv}>
+  //       <p>My email address is</p>
+  //       <input
+  //         type="email"
+  //         name="email"
+  //         value={email}
+  //         onChange={onEmailChange}
+  //         css={inputUser}
+  //       />
+  //       <p>and my password is</p>
+  //       <form>
+  //         <input
+  //           type={passwordVisibility ? 'text' : 'password'}
+  //           name="password"
+  //           value={password}
+  //           onChange={onPasswordChange}
+  //           css={inputPassword}
+  //         />
+  //         <button onClick={showHide} css={showHideButton}>
+  //           <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+  //         </button>
+  //       </form>
+  //       <div css={rememberMe}>
+  //         <input type="checkbox" name="remember" />
+  //         <label htmlFor="checkbox">Remember me</label>
+  //       </div>
+  //       <Link href='/shows'>
+  //         <button onClick={onLoginClick} css={buttonRemake}>LOGIN</button>
+  //       </Link>
+  //     </div>
+  //   );
+  // }
 
-// export default observer(LoginForm);
+  // export default observer(LoginForm);
 
 
 
@@ -146,20 +147,24 @@ function LoginForm({ onLogin }) {
       <input
         type="email"
         name="email"
-        // value={email}
         css={inputUser}
-        ref={register({})}
+        ref={register({
+          required: 'Required',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: 'invalid email address',
+          },
+        })}
         onChange={onEmailChange}
-         />
+      />
       <p>and my password is</p>
       <input
         type={passwordVisibility ? 'text' : 'password'}
         name="password"
         ref={register({})}
-        // value={password}
         onChange={onPasswordChange}
         css={inputPassword}
-         />
+      />
       <button onClick={showHide} css={showHideButton}>
         <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
       </button>
