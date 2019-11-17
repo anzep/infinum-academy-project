@@ -156,6 +156,7 @@ function LoginForm({ onLogin }) {
         })}
         onChange={onEmailChange}
       />
+      {errors.email && <span>{errors.email.message}</span>}
       <p>and my password is</p>
       <input
         type={passwordVisibility ? 'text' : 'password'}
@@ -171,7 +172,12 @@ function LoginForm({ onLogin }) {
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <input type="submit" onClick={onLoginClick} css={buttonRemake} />
+      <input
+        type="submit"
+        onClick={onLoginClick}
+        css={buttonRemake}
+        value="LOGIN"
+      />
     </form>
   );
 }

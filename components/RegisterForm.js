@@ -86,7 +86,7 @@ function RegisterForm({ onRegister }) {
 
     setPasswordVisibility(!passwordVisibility);
   }
-  
+
   const { errors, register, handleSubmit } = useForm();
 
   function onSubmit(data) {
@@ -165,7 +165,12 @@ function RegisterForm({ onRegister }) {
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <input type="submit" onClick={onRegisterClick} css={buttonRemake} />
+      <input
+        type="submit"
+        onClick={onRegisterClick}
+        css={buttonRemake}
+        value="REGISTER"
+      />
     </form>
   );
 }

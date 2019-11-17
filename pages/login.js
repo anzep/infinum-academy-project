@@ -47,8 +47,10 @@ function loginUser(email, password) {
     }),
   })
     .then((res) => res.json())
-    .then((data) => {
-      document.cookie = data.data.token;
+    .then((res) => {
+      if (res.status === 200) {
+        document.cookie = res.data.token;
+      }
     });
 }
 
