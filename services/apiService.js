@@ -4,6 +4,7 @@ class ApiService {
   _baseUrl = 'https://api.infinum.academy/api/';
 
   _makeRequest(url, method, authKey, headers) {
+    console.log('make request triggered');
     return fetch(`${this._baseUrl}${url}`, {
       method,
       headers: {
@@ -19,8 +20,9 @@ class ApiService {
   }
 
   post(url, authKey) {
+    console.log('post triggered');
     return this._makeRequest(url, 'POST', authKey);
   }
 }
 
-export default ApiService;
+export default new ApiService();

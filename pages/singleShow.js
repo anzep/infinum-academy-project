@@ -112,4 +112,4 @@ function Shows() {
   );
 }
 
-export default observer(Shows);
+export default observer(singleShow);

@@ -93,49 +93,8 @@ function RegisterForm({ onRegister }) {
     console.log('logging you in...', data);
   }
 
-  //   return (
-  //     <div css={mainDiv}>
-  //       <p>My email address is</p>
-  //       <input
-  //         type="email"
-  //         name="email"
-  //         value={email}
-  //         onChange={onEmailChange}
-  //         css={inputUser}
-  //       />
-  //       <p>and my password will be</p>
-  //       <form>
-  //         <input
-  //           type={passwordVisibility ? 'text' : 'password'}
-  //           name="password"
-  //           value={password}
-  //           onChange={onPasswordChange}
-  //           css={inputPassword}
-  //           id='pwd'
-  //         />
-  //         <button onClick={showHide} css={showHideButton}>
-  //           <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
-  //         </button>
-  //       </form>
-  //       <div css={rememberMe}>
-  //         <input type="checkbox" name="remember" />
-  //         <label htmlFor="checkbox">Remember me</label>
-  //       </div>
-  //       <button onClick={onRegisterClick} css={buttonRemake}>REGISTER</button>
-  //     </div>
-  //   );
-  // }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} css={mainDiv}>
-      {/* <input
-        type="text"
-        name="name"
-        ref={register({
-          required: 'Name is required.',
-        })}
-      />
-      {errors.name && <span>{errors.name.message}</span>} */}
       <p>My email address is</p>
       <input
         type="email"

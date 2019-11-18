@@ -96,16 +96,9 @@ function Shows() {
                     pathname: '/singleShow',
                     data: _id,
                   }}
-                >{title}
-                </Link>
-                <Link
-                  to={{
-                    pathname: '/singleShow',
-                  }}
                 >
-                  <a>why</a>
+                  <a css={formP}>{title}</a>
                 </Link>
-
               </div>
             ))
           }

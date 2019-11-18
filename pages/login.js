@@ -37,6 +37,7 @@ const footer = css`
 
 /* End of CSS rules */
 
+/* this is old fetch and it works */
 function loginUser(email, password) {
   fetch('https://api.infinum.academy/api/users/sessions', {
     method: 'POST',
@@ -53,7 +54,16 @@ function loginUser(email, password) {
       console.log(document.cookie);
     });
 }
-// ApiService.post('users/session');
+
+/* this is new fetch with services and its connected, but doesn't work */
+function onTestLogin(event) {
+  console.log('function triggered');
+  ApiService.post('users/session')
+    .then((data) => {
+      document.cookie = data.data.token;
+      console.log(document.cookie);
+    });
+}
 
 function Login() {
 
@@ -63,7 +73,7 @@ function Login() {
         <Header />
       </div>
       <div css={form}>
-        <LoginForm onLogin={loginUser} />
+        <LoginForm onLogin={onTestLogin} />
       </div>
       <div css={footer}>
         <Footer />
