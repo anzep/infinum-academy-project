@@ -6,7 +6,7 @@ import {useAsync} from 'react-use';
 
 import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
-import appStore from '../store/AppStore';
+import AppStore from '../store/AppStore';
 
 /* CSS rules */
 
@@ -71,7 +71,7 @@ async function getShows() {
     .then((response) => response.json())
     .then(({ data = [] }) => data);
 
-  appStore.shows.replace(shows);
+  AppStore.shows.replace(shows);
 }
 
 function Shows() {
@@ -87,7 +87,7 @@ function Shows() {
         <div css={formContainer}>
           {loading && <p css={loadingP}>Shows are loading...</p>}
           {
-            appStore.shows.map(({ _id, title, imageUrl }) => (
+            AppStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
                 <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
                 <p css={formP}>{title}</p>

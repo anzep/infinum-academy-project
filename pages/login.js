@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ApiService from '../services/apiService';
 
 /* CSS rules */
 
@@ -37,21 +38,21 @@ const footer = css`
 /* End of CSS rules */
 
 function loginUser(email, password) {
-  fetch('https://api.infinum.academy/api/users/sessions', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.status === 200) {
-        document.cookie = res.data.token;
-      }
-    });
+  // fetch('https://api.infinum.academy/api/users/sessions', {
+  //   method: 'POST',
+  //   headers: {
+  //     'content-type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     email, password,
+  //   }),
+  // })
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     document.cookie = data.data.token;
+  //     console.log(document.cookie);
+  //   });
+  ApiService.post('users/session');
 }
 
 function Login() {
