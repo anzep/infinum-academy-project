@@ -3,11 +3,19 @@ import {observer} from 'mobx-react';
 import { css } from '@emotion/core';
 import fetch from 'isomorphic-fetch';
 import {useAsync} from 'react-use';
-import Link from 'next/link';
 
 import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
 import AppStore from '../store/AppStore';
+
+/* This page will be used, when the user will click on an image on shows.js.
+I will attempt to get id of the show from image and then somehow pass it onto
+this page. Somehow. I will list here the name of the show, cover, description,
+and the list of episodes. Somewhere will be a button to add an episode, which will
+trigger the modal for that.
+
+Currently trying with <Link> to on shows.js
+*/
 
 /* CSS rules */
 
@@ -84,28 +92,14 @@ function Shows() {
         <HeaderMain />
       </div>
       <div css={form}>
-        <h3 css={formH3}>All shows</h3>
+        <h3 css={formH3}>Selected show</h3>
         <div css={formContainer}>
           {loading && <p css={loadingP}>Shows are loading...</p>}
           {
             AppStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
                 <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
-                <Link
-                  to={{
-                    pathname: '/singleShow',
-                    data: _id,
-                  }}
-                >{title}
-                </Link>
-                <Link
-                  to={{
-                    pathname: '/singleShow',
-                  }}
-                >
-                  <a>why</a>
-                </Link>
-
+                <p css={formP}>{title}</p>
               </div>
             ))
           }

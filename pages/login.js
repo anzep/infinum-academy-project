@@ -38,22 +38,22 @@ const footer = css`
 /* End of CSS rules */
 
 function loginUser(email, password) {
-  // fetch('https://api.infinum.academy/api/users/sessions', {
-  //   method: 'POST',
-  //   headers: {
-  //     'content-type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     email, password,
-  //   }),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     document.cookie = data.data.token;
-  //     console.log(document.cookie);
-  //   });
-  ApiService.post('users/session');
+  fetch('https://api.infinum.academy/api/users/sessions', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      email, password,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      document.cookie = data.data.token;
+      console.log(document.cookie);
+    });
 }
+// ApiService.post('users/session');
 
 function Login() {
 
