@@ -7,6 +7,7 @@ import {useAsync} from 'react-use';
 import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
 import AppStore from '../store/AppStore';
+import apiService from '../services/apiService';
 
 /* This page will be used, when the user will click on an image on shows.js.
 I will attempt to get id of the show from image and then somehow pass it onto
@@ -76,16 +77,14 @@ const loadingP = css`
 /* End of CSS rules */
 
 async function getShows() {
-  const shows = await fetch('https://api.infinum.academy/api/shows')
-    .then((response) => response.json())
+  const shows = await apiService.get('shows')
     .then(({ data = [] }) => data);
 
   AppStore.shows.replace(shows);
 }
 
-function Shows() {
+function singleShow() {
   const {loading} = useAsync(getShows);
-
   return (
     <div css={container}>
       <div>
