@@ -34,23 +34,8 @@ const form = css`
 
 /* End of CSS rules */
 
-// function registerUser(email, password) {
-//   fetch('https://api.infinum.academy/api/users', {
-//     method: 'POST',
-//     headers: {
-//       'content-type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       email, password,
-//     }),
-//   });
-// }
-
-function onTestRegister(email, password) {
-  ApiService.post('users', {
-    email: email,
-    password: password,
-  });
+function onRegister(data) {
+  ApiService.post('users', data);
 }
 
 function Register() {
@@ -61,7 +46,7 @@ function Register() {
         <Header />
       </div>
       <div css={form}>
-        <RegisterForm onRegister={onTestRegister} css={form} />
+        <RegisterForm onRegister={onRegister} css={form} />
       </div>
     </div>
   );

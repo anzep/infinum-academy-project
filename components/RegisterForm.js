@@ -61,6 +61,12 @@ const showHideButtonImg = css`
   width: 30px;
 `;
 
+const errorDiv = css`
+  color: red;
+  font-size: 12px;
+  font-family: 'Verdana';
+`;
+
 /* End of CSS rules */
 
 function RegisterForm({ onRegister }) {
@@ -77,10 +83,6 @@ function RegisterForm({ onRegister }) {
     setPassword(e.target.value);
   }
 
-  function onRegisterClick() {
-    onRegister(email, password);
-  }
-
   function showHide(e) {
     e.preventDefault();
 
@@ -91,6 +93,7 @@ function RegisterForm({ onRegister }) {
 
   function onSubmit(data) {
     console.log('logging you in...', data);
+    onRegister(data);
   }
 
   return (
@@ -104,29 +107,32 @@ function RegisterForm({ onRegister }) {
           required: 'Required',
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: 'invalid email address',
           },
         })}
         onChange={onEmailChange}
       />
+      {errors.email && <div css={errorDiv}>Invalid email address</div>}
       <p>and my password will be</p>
       <input
         type={passwordVisibility ? 'text' : 'password'}
         name="password"
-        ref={register({})}
+        ref={register({
+          required: true,
+          minLength: 5,
+        })}
         onChange={onPasswordChange}
         css={inputPassword}
       />
       <button onClick={showHide} css={showHideButton}>
         <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
       </button>
+      {errors.password && <div css={errorDiv}>Password should be longer than 5 characters.</div>}
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
       <input
         type="submit"
-        onClick={onRegisterClick}
         css={buttonRemake}
         value="REGISTER"
       />

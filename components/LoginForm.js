@@ -108,12 +108,11 @@ function LoginForm({ onLogin }) {
           required: true,
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: 'Invalid email address',
           },
         })}
         onChange={onEmailChange}
       />
-      {errors.email && <div css={errorDiv}>{errors.email.message}</div>}
+      {errors.email && <div css={errorDiv}>Invalid email address</div>}
       <p>and my password is</p>
       <input
         type={passwordVisibility ? 'text' : 'password'}
