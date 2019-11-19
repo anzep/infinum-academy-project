@@ -77,10 +77,6 @@ function LoginForm({ onLogin }) {
   function onPasswordChange(e) {
     setPassword(e.target.value);
   }
-  
-  function onLoginClick() {
-    onLogin(email, password);
-  }
 
   function showHide(e) {
     e.preventDefault();
@@ -92,6 +88,7 @@ function LoginForm({ onLogin }) {
 
   function onSubmit(data) {
     console.log('logging you in...', data);
+    onLogin(data);
   }
 
   return (
@@ -102,10 +99,10 @@ function LoginForm({ onLogin }) {
         name="email"
         css={inputUser}
         ref={register({
-          required: 'Required',
+          required: true,
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: 'invalid email address',
+            message: 'Invalid email address',
           },
         })}
         onChange={onEmailChange}
@@ -115,7 +112,9 @@ function LoginForm({ onLogin }) {
       <input
         type={passwordVisibility ? 'text' : 'password'}
         name="password"
-        ref={register({})}
+        ref={register({
+          required: true,
+        })}
         onChange={onPasswordChange}
         css={inputPassword}
       />
@@ -128,7 +127,6 @@ function LoginForm({ onLogin }) {
       </div>
       <input
         type="submit"
-        onClick={onLoginClick}
         css={buttonRemake}
         value="LOGIN"
       />

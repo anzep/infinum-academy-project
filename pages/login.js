@@ -37,16 +37,15 @@ const footer = css`
 
 /* End of CSS rules */
 
-function onLogin(email, password) {
-  ApiService.post('users/sessions', {
-    email,
-    password,
-  })
+function onLogin(data) {
+  ApiService.post('users/sessions', data)
     .then((response) => {
       if (response.data) {
         document.cookie = response.data.token;
       }
-
+    })
+    .catch((errors) => {
+      console.log(errors.message);
     });
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import fetch from 'isomorphic-fetch';
 
 class ApiService {
@@ -11,11 +12,15 @@ class ApiService {
         'content-type': 'application/json',
         ...headers,
       },
-    }).then(function(response) {
-      if (response.status >= 400) {
-        throw new Error('Bad response from server');
+    }).then((response) => {
+      debugger;
+      if (response.status === 200) {
+        return response.json();
+      } if (response.status === 401) {
+        throw new Error('Authentication error');
+      } else {
+        throw response.errors;
       }
-      return response.json();
     });
   }
 
