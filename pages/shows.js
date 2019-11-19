@@ -8,6 +8,7 @@ import Link from 'next/link';
 import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
 import AppStore from '../store/AppStore';
+import apiService from '../services/apiService';
 
 /* CSS rules */
 
@@ -68,8 +69,7 @@ const loadingP = css`
 /* End of CSS rules */
 
 async function getShows() {
-  const shows = await fetch('https://api.infinum.academy/api/shows')
-    .then((response) => response.json())
+  const shows = await apiService.get('shows')
     .then(({ data = [] }) => data);
 
   AppStore.shows.replace(shows);
