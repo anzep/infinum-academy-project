@@ -62,6 +62,12 @@ const showHideButtonImg = css`
   width: 30px;
 `;
 
+const errorDiv = css`
+  color: red;
+  font-size: 12px;
+  font-family: 'Verdana';
+`;
+
 /* End of CSS rules */
 
 function LoginForm({ onLogin }) {
@@ -107,7 +113,7 @@ function LoginForm({ onLogin }) {
         })}
         onChange={onEmailChange}
       />
-      {errors.email && <span>{errors.email.message}</span>}
+      {errors.email && <div css={errorDiv}>{errors.email.message}</div>}
       <p>and my password is</p>
       <input
         type={passwordVisibility ? 'text' : 'password'}
@@ -118,9 +124,11 @@ function LoginForm({ onLogin }) {
         onChange={onPasswordChange}
         css={inputPassword}
       />
+      
       <button onClick={showHide} css={showHideButton}>
         <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
       </button>
+      {errors.password && <div css={errorDiv}>This field is required</div>}
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>

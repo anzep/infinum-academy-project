@@ -44,8 +44,8 @@ function onLogin(data) {
         document.cookie = response.data.token;
       }
     })
-    .catch((errors) => {
-      console.log(errors.message);
+    .catch((error) => {
+      console.log(error.message);
     });
 }
 

@@ -13,7 +13,6 @@ class ApiService {
         ...headers,
       },
     }).then((response) => {
-      debugger;
       if (response.status === 200) {
         return response.json();
       } if (response.status === 401) {
