@@ -4,9 +4,8 @@ class ApiService {
   _baseUrl = 'https://api.infinum.academy/api/';
 
   _makeRequest(url, method, body, headers) {
-    console.log('make request triggered');
     return fetch(`${this._baseUrl}${url}`, {
-      method: method,
+      method,
       body: JSON.stringify(body),
       headers: {
         'content-type': 'application/json',
