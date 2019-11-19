@@ -38,30 +38,29 @@ const footer = css`
 /* End of CSS rules */
 
 /* this is old fetch and it works */
-function loginUser(email, password) {
-  fetch('https://api.infinum.academy/api/users/sessions', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      document.cookie = data.data.token;
-      console.log(document.cookie);
-    });
-}
+// function loginUser(email, password) {
+//   fetch('https://api.infinum.academy/api/users/sessions', {
+//     method: 'POST',
+//     headers: {
+//       'content-type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       email, password,
+//     }),
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       document.cookie = data.data.token;
+//       console.log(document.cookie);
+//     });
+// }
 
 /* this is new fetch with services and its connected, but doesn't work */
 function onTestLogin(email, password) {
-  const body = JSON.stringify({
-    email, password,
-  });
-  console.log('function triggered');
-  ApiService.post('users/session', body)
+  ApiService.post('users/sessions', {
+    email: email,
+    password: password,
+  })
     .then((data) => {
       document.cookie = data.data.token;
       console.log(document.cookie);

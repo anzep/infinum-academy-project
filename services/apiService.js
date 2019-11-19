@@ -6,27 +6,25 @@ class ApiService {
   _makeRequest(url, method, body, headers) {
     console.log('make request triggered');
     return fetch(`${this._baseUrl}${url}`, {
-      method,
-      body,
+      method: method,
+      body: JSON.stringify(body),
       headers: {
         'content-type': 'application/json',
         ...headers,
       },
-    }).then(function(res) {
-      if (res.status >= 400) {
+    }).then(function(response) {
+      if (response.status >= 400) {
         throw new Error('Bad response from server');
       }
-      response.json();
+      return response.json();
     });
   }
 
-  get(url, authKey) {
-    return this._makeRequest(url, 'GET', authKey);
+  get(url) {
+    return this._makeRequest(url, 'GET');
   }
 
-  post(url, body, authKey) {
-    console.log('post triggered');
-    console.log(body);
+  post(url, body) {
     return this._makeRequest(url, 'POST', body);
   }
 }
