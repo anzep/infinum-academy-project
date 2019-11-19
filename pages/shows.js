@@ -91,14 +91,7 @@ function Shows() {
             AppStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
                 <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
-                <Link
-                  to={{
-                    pathname: '/singleShow',
-                    data: _id,
-                  }}
-                >
                   <a css={formP}>{title}</a>
-                </Link>
               </div>
             ))
           }
