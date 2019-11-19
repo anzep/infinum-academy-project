@@ -56,9 +56,12 @@ function loginUser(email, password) {
 }
 
 /* this is new fetch with services and its connected, but doesn't work */
-function onTestLogin(event) {
+function onTestLogin(email, password) {
+  const body = JSON.stringify({
+    email, password,
+  });
   console.log('function triggered');
-  ApiService.post('users/session')
+  ApiService.post('users/session', body)
     .then((data) => {
       document.cookie = data.data.token;
       console.log(document.cookie);
