@@ -5,6 +5,7 @@ import {observer} from 'mobx-react';
 
 import Header from '../components/Header';
 import RegisterForm from '../components/RegisterForm';
+import ApiService from '../services/apiService';
 
 /* CSS rules */
 
@@ -33,15 +34,22 @@ const form = css`
 
 /* End of CSS rules */
 
-function registerUser(email, password) {
-  fetch('https://api.infinum.academy/api/users', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
+// function registerUser(email, password) {
+//   fetch('https://api.infinum.academy/api/users', {
+//     method: 'POST',
+//     headers: {
+//       'content-type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       email, password,
+//     }),
+//   });
+// }
+
+function onTestRegister(email, password) {
+  ApiService.post('users', {
+    email: email,
+    password: password,
   });
 }
 
@@ -53,7 +61,7 @@ function Register() {
         <Header />
       </div>
       <div css={form}>
-        <RegisterForm onRegister={registerUser} css={form} />
+        <RegisterForm onRegister={onTestRegister} css={form} />
       </div>
     </div>
   );
