@@ -94,7 +94,6 @@ function RegisterForm({ onRegister }) {
   const { errors, register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log('logging you in...', data);
     router.push('/login');
     onRegister(data);
   }
