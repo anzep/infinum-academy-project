@@ -1,7 +1,6 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import { css } from '@emotion/core';
-import fetch from 'isomorphic-fetch';
 import {useAsync} from 'react-use';
 
 import HeaderMain from '../components/HeaderMain';
