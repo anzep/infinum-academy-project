@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import {observer} from 'mobx-react';
 import useForm from 'react-hook-form';
+import {useRouter} from 'next/router';
 
 /* CSS RULES */
 
@@ -70,6 +71,7 @@ const errorDiv = css`
 /* End of CSS rules */
 
 function RegisterForm({ onRegister }) {
+  const router = useRouter();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -91,8 +93,9 @@ function RegisterForm({ onRegister }) {
 
   const { errors, register, handleSubmit } = useForm();
 
-  function onSubmit(data) {
+  const onSubmit = (data) => {
     console.log('logging you in...', data);
+    router.push('/login');
     onRegister(data);
   }
 
