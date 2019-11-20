@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import { css } from '@emotion/core';
 import useForm from 'react-hook-form';
 
+/* CSS rules */
 
 const mask = css`
   background: #000000c2;
@@ -36,6 +37,8 @@ const input = css`
   color: #FF7BA3;
   font-size: 15px;
 `;
+
+/* End of CSS rules */
 
 function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
   const [episode, setEpisode] = React.useState({

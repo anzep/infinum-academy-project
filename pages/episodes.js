@@ -10,8 +10,6 @@ function getShows(showId) {
     .then((response) => response.data);
 }
 
-
-
 function Episodes() {
   const router = useRouter();
   const showId = router.query.id;
