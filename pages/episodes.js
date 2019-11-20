@@ -4,7 +4,6 @@ import {observer} from 'mobx-react';
 import { useRouter } from 'next/router';
 import ApiService from '../services/apiService';
 import AddEpisodeModal from '../components/AddEpisodeModal';
-import styles from '../css/modal.module.css';
 
 function Episodes() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,13 +24,12 @@ function Episodes() {
   return (
     <div>
       Episodes
-      {loading && <p>Shows are loading...</p>}
-      {!loading && show.title}
+      {/* {loading && loading.data.title} */}
 
-      <button id="modal_opener" onClick={setIsModalOpen(true)}>Click Me!</button>
+      {/* <button id="modal_opener" onClick={setIsModalOpen(true)}>Click Me!</button>
       <AddEpisodeModal isModalOpen={isModalOpen}>
         <h2>Told Ya!</h2>
-      </AddEpisodeModal>
+      </AddEpisodeModal> */}
     </div>
   );
 }
