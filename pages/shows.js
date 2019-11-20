@@ -1,7 +1,6 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import { css } from '@emotion/core';
-import fetch from 'isomorphic-fetch';
 import {useAsync} from 'react-use';
 import Link from 'next/link';
 
@@ -91,7 +90,9 @@ function Shows() {
             AppStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
                 <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
-                <p css={formP}>{title}</p>
+                <Link href={`/episodes?id=${_id}`}>
+                  <a css={formP}>{title}</a>
+                </Link>
               </div>
             ))
           }
