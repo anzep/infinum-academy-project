@@ -24,6 +24,16 @@ function Episodes() {
     setIsModalVisible(true);
   }
 
+  function onEpisodeAdded(episode) {
+    ApiService.post('episodes/', episode)
+      .then(() => {
+        setIsModalVisible(false);
+      })
+      .catch((error) => {
+        // TODO handle error correctly
+      });
+  }
+
   return (
     <div>
       Episodes
@@ -31,10 +41,8 @@ function Episodes() {
 
       <div>
         <button onClick={onModalOpen}>Add new episode</button>
-        {isModalVisible && 
-          <AddEpisodeModal onModalClose={onModalClose}>
-            gg
-          </AddEpisodeModal>
+        {isModalVisible &&
+          <AddEpisodeModal onModalClose={onModalClose} onEpisodeAdded={onEpisodeAdded} />
         }
       </div>
     </div>
