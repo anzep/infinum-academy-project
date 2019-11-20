@@ -48,12 +48,17 @@ const formContainer = css`
 const formImg = css`
   height: 200px;
   width: 140px;
+  filter: grayscale(100%);
+  :hover {
+    filter: grayscale(0%);
+  }
 `;
 
 const formP = css`
   font-family: 'Verdana';
   font-size: 13px;
   color: #595959;
+  cursor: pointer;
 `;
 
 const formH3 = css`
@@ -90,9 +95,11 @@ function Shows() {
             AppStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
                 <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
-                <Link href={`/episodes?id=${_id}`}>
-                  <a css={formP}>{title}</a>
-                </Link>
+                <div>
+                  <Link href={`/episodes?id=${_id}`}>
+                    <a css={formP}>{title}</a>
+                  </Link>
+                </div>
               </div>
             ))
           }

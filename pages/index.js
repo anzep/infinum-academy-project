@@ -2,6 +2,8 @@ import React from 'react';
 import {useAsync} from 'react-use';
 import fetch from 'isomorphic-fetch';
 
+/* a remnant of our initial work */
+
 function getShows() {
   return fetch('https://api.infinum.academy/api/shows')
     .then((response) => response.json());

@@ -96,7 +96,7 @@ function RegisterForm({ onRegister }) {
   const onSubmit = (data) => {
     router.push('/login');
     onRegister(data);
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} css={mainDiv}>

@@ -19,6 +19,13 @@ const modal = css`
   background: white;
   box-shadow: 1px 1px 6px 0px #949494;
   padding: 20px;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(1, 10fr);
+  grid-gap: 15px;
+  justify-content: center;
+  align-items: center;
+  
 `;
 
 const input = css`
@@ -27,7 +34,7 @@ const input = css`
   border-bottom: 2px solid #FF7BA3;
   font-family: 'Verdana';
   color: #FF7BA3;
-  font-size: 20px;
+  font-size: 15px;
 `;
 
 function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
@@ -95,6 +102,7 @@ function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
         <input
           type="text"
           name="showId"
+          placeholder="Show id"
           css={input}
           ref={register({})}
           onChange={onShowIdChange}
@@ -102,6 +110,7 @@ function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
         <input
           type="text"
           name="mediaId"
+          placeholder="Media id"
           css={input}
           ref={register({})}
           onChange={onMediaIdChange}
@@ -109,6 +118,7 @@ function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
         <input
           type="text"
           name="title"
+          placeholder="Title"
           css={input}
           ref={register({})}
           onChange={onTitleChange}
@@ -116,6 +126,7 @@ function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
         <input
           type="text"
           name="description"
+          placeholder="Description"
           css={input}
           ref={register({})}
           onChange={onDescriptionChange}
@@ -123,6 +134,7 @@ function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
         <input
           type="text"
           name="episodeNumber"
+          placeholder="Episode number"
           css={input}
           ref={register({})}
           onChange={onEpisodeNumberChange}
@@ -130,6 +142,7 @@ function AddEpisodeModal({onModalClose, onEpisodeAdded}) {
         <input
           type="text"
           name="season"
+          placeholder="Season"
           css={input}
           ref={register({})}
           onChange={onSeasonChange}

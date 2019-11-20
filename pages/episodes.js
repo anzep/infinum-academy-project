@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {useAsync, useGetSetState} from 'react-use';
+import { useState } from 'react';
+import {useAsync} from 'react-use';
 import {observer} from 'mobx-react';
 import {useRouter} from 'next/router';
 import ApiService from '../services/apiService';
@@ -10,10 +10,12 @@ function getShows(showId) {
     .then((response) => response.data);
 }
 
+
+
 function Episodes() {
   const router = useRouter();
   const showId = router.query.id;
-  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const {show} = useAsync(() => getShows(showId));
 
   function onModalClose() {
@@ -25,13 +27,14 @@ function Episodes() {
   }
 
   function onEpisodeAdded(episode) {
-    console.log(document.cookie)
     ApiService.post('episodes/', episode, {Authorization: document.cookie})
       .then(() => {
         setIsModalVisible(false);
       })
       .catch((error) => {
-        // TODO handle error correctly
+        if (error.message === 'Validation error') {
+          // TODO handle validation errors
+        }
       });
   }
 
@@ -39,12 +42,10 @@ function Episodes() {
     <div>
       Episodes
       {show && show.title}
-
       <div>
         <button onClick={onModalOpen}>Add new episode</button>
         {isModalVisible &&
-          <AddEpisodeModal onModalClose={onModalClose} onEpisodeAdded={onEpisodeAdded} />
-        }
+        <AddEpisodeModal onModalClose={onModalClose} onEpisodeAdded={onEpisodeAdded} />}
       </div>
     </div>
   );

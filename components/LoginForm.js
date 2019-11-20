@@ -1,5 +1,4 @@
 import { css } from '@emotion/core';
-// import Link from 'next/link';
 import { observer } from 'mobx-react';
 import React from 'react';
 import useForm from 'react-hook-form';
@@ -93,7 +92,6 @@ function LoginForm({ onLogin }) {
   const { errors, register, handleSubmit } = useForm();
 
   function onSubmit(data) {
-    console.log('logging you in...', data);
     onLogin(data);
   }
 

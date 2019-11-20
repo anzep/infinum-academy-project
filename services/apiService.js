@@ -26,7 +26,6 @@ class ApiService {
   }
 
   get(url) {
-    console.log('get got called');
     return this._makeRequest(url, 'GET');
   }
 

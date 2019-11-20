@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import fetch from 'isomorphic-fetch';
 import {observer} from 'mobx-react';
 
 import Header from '../components/Header';
@@ -24,7 +23,6 @@ const header = css`
 
 const form = css`
   flex: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +38,6 @@ function onRegister(data) {
 
 function Register() {
   return (
-
     <div css={container}>
       <div css={header}>
         <Header />
