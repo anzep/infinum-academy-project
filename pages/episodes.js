@@ -25,7 +25,8 @@ function Episodes() {
   }
 
   function onEpisodeAdded(episode) {
-    ApiService.post('episodes/', episode)
+    console.log(document.cookie)
+    ApiService.post('episodes/', episode, {Authorization: document.cookie})
       .then(() => {
         setIsModalVisible(false);
       })

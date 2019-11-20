@@ -13,8 +13,10 @@ class ApiService {
         ...headers,
       },
     }).then((response) => {
-      if (response.status === 200) {
+      if (response.status >= 200 && response.status < 300) {
         return response.json();
+      } if (response.status === 400) {
+        throw new Error('Validation error');
       } if (response.status === 401) {
         throw new Error('Authentication error');
       } else {
@@ -28,8 +30,8 @@ class ApiService {
     return this._makeRequest(url, 'GET');
   }
 
-  post(url, body) {
-    return this._makeRequest(url, 'POST', body);
+  post(url, body, headers) {
+    return this._makeRequest(url, 'POST', body, headers);
   }
 }
 
