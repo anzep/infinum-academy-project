@@ -1,5 +1,7 @@
 import { css } from '@emotion/core';
-import {observer} from 'mobx-react';
+import { observer } from 'mobx-react';
+import React from 'react';
+import useForm from 'react-hook-form';
 
 /* CSS RULES */
 
@@ -59,6 +61,12 @@ const showHideButtonImg = css`
   width: 30px;
 `;
 
+const errorDiv = css`
+  color: red;
+  font-size: 12px;
+  font-family: 'Verdana';
+`;
+
 /* End of CSS rules */
 
 function LoginForm({ onLogin }) {
@@ -74,10 +82,6 @@ function LoginForm({ onLogin }) {
   function onPasswordChange(e) {
     setPassword(e.target.value);
   }
-  
-  function onLoginClick() {
-    onLogin(email, password);
-  }
 
   function showHide(e) {
     e.preventDefault();
@@ -85,36 +89,53 @@ function LoginForm({ onLogin }) {
     setPasswordVisibility(!passwordVisibility);
   }
 
+  const { errors, register, handleSubmit } = useForm();
+
+  function onSubmit(data) {
+    onLogin(data);
+  }
+
   return (
-    <div css={mainDiv}>
+    <form onSubmit={handleSubmit(onSubmit)} css={mainDiv}>
       <p>My email address is</p>
       <input
         type="email"
         name="email"
-        value={email}
-        onChange={onEmailChange}
         css={inputUser}
+        ref={register({
+          required: true,
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+          },
+        })}
+        onChange={onEmailChange}
       />
+      {errors.email && <div css={errorDiv}>Invalid email address</div>}
       <p>and my password is</p>
-      <form>
-        <input
-          type={passwordVisibility ? 'text' : 'password'}
-          name="password"
-          value={password}
-          onChange={onPasswordChange}
-          css={inputPassword}
-        />
-        <button onClick={showHide} css={showHideButton}>
-          <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
-        </button>
-      </form>
+      <input
+        type={passwordVisibility ? 'text' : 'password'}
+        name="password"
+        ref={register({
+          required: true,
+        })}
+        onChange={onPasswordChange}
+        css={inputPassword}
+      />
+      
+      <button onClick={showHide} css={showHideButton}>
+        <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+      </button>
+      {errors.password && <div css={errorDiv}>This field is required</div>}
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <button onClick={onLoginClick} css={buttonRemake}>LOGIN</button>
-    </div>
+      <input
+        type="submit"
+        css={buttonRemake}
+        value="LOGIN"
+      />
+    </form>
   );
 }
-
 export default observer(LoginForm);

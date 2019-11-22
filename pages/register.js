@@ -1,10 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import fetch from 'isomorphic-fetch';
 import {observer} from 'mobx-react';
 
 import Header from '../components/Header';
 import RegisterForm from '../components/RegisterForm';
+import ApiService from '../services/apiService';
 
 /* CSS rules */
 
@@ -23,7 +23,6 @@ const header = css`
 
 const form = css`
   flex: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,27 +32,18 @@ const form = css`
 
 /* End of CSS rules */
 
-function registerUser(email, password) {
-  fetch('https://api.infinum.academy/api/users', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
-  });
+function onRegister(data) {
+  ApiService.post('users', data);
 }
 
 function Register() {
   return (
-
     <div css={container}>
       <div css={header}>
         <Header />
       </div>
       <div css={form}>
-        <RegisterForm onRegister={registerUser} css={form} />
+        <RegisterForm onRegister={onRegister} css={form} />
       </div>
     </div>
   );

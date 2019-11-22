@@ -1,6 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import {observer} from 'mobx-react';
+import useForm from 'react-hook-form';
+import {useRouter} from 'next/router';
 
 /* CSS RULES */
 
@@ -60,9 +62,16 @@ const showHideButtonImg = css`
   width: 30px;
 `;
 
+const errorDiv = css`
+  color: red;
+  font-size: 12px;
+  font-family: 'Verdana';
+`;
+
 /* End of CSS rules */
 
 function RegisterForm({ onRegister }) {
+  const router = useRouter();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -76,47 +85,62 @@ function RegisterForm({ onRegister }) {
     setPassword(e.target.value);
   }
 
-  function onRegisterClick() {
-    onRegister(email, password);
-  }
-
   function showHide(e) {
     e.preventDefault();
 
     setPasswordVisibility(!passwordVisibility);
   }
 
+  const { errors, register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    router.push('/login');
+    onRegister(data);
+  };
+
   return (
-    <div css={mainDiv}>
+    <form onSubmit={handleSubmit(onSubmit)} css={mainDiv}>
       <p>My email address is</p>
       <input
         type="email"
         name="email"
-        value={email}
-        onChange={onEmailChange}
         css={inputUser}
+        ref={register({
+          required: 'Required',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+          },
+        })}
+        onChange={onEmailChange}
       />
+      {errors.email && <div css={errorDiv}>Invalid email address</div>}
       <p>and my password will be</p>
-      <form>
-        <input
-          type={passwordVisibility ? 'text' : 'password'}
-          name="password"
-          value={password}
-          onChange={onPasswordChange}
-          css={inputPassword}
-          id='pwd'
-        />
-        <button onClick={showHide} css={showHideButton}>
-          <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
-        </button>
-      </form>
+      <input
+        type={passwordVisibility ? 'text' : 'password'}
+        name="password"
+        ref={register({
+          required: true,
+          minLength: 5,
+        })}
+        onChange={onPasswordChange}
+        css={inputPassword}
+      />
+      <button onClick={showHide} css={showHideButton}>
+        <img src='ic-akcije-show-password-red@3x.png' alt='show/hide' css={showHideButtonImg} />
+      </button>
+      {errors.password && <div css={errorDiv}>Password should be longer than 5 characters.</div>}
       <div css={rememberMe}>
         <input type="checkbox" name="remember" />
         <label htmlFor="checkbox">Remember me</label>
       </div>
-      <button onClick={onRegisterClick} css={buttonRemake}>REGISTER</button>
-    </div>
+      <input
+        type="submit"
+        css={buttonRemake}
+        value="REGISTER"
+      />
+    </form>
   );
 }
+
 
 export default observer(RegisterForm);

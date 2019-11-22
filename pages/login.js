@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ApiService from '../services/apiService';
 
 /* CSS rules */
 
@@ -21,7 +22,6 @@ const header = css`
 
 const form = css`
   flex: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,22 +36,15 @@ const footer = css`
 
 /* End of CSS rules */
 
-function loginUser(email, password) {
-  fetch('https://api.infinum.academy/api/users/sessions', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      document.cookie = data.data.token;
-
-      // to check cookie value:
-      // alert(document.cookie);
+function onLogin(data) {
+  ApiService.post('users/sessions', data)
+    .then((response) => {
+      if (response.data) {
+        document.cookie = response.data.token;
+      }
+    })
+    .catch((error) => {
+      console.log(error.message);
     });
 }
 
@@ -63,7 +56,7 @@ function Login() {
         <Header />
       </div>
       <div css={form}>
-        <LoginForm onLogin={loginUser} />
+        <LoginForm onLogin={onLogin} />
       </div>
       <div css={footer}>
         <Footer />

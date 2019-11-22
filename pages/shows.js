@@ -1,12 +1,13 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import { css } from '@emotion/core';
-import fetch from 'isomorphic-fetch';
 import {useAsync} from 'react-use';
+import Link from 'next/link';
 
 import HeaderMain from '../components/HeaderMain';
 import FooterMain from '../components/FooterMain';
-import appStore from '../store/AppStore';
+import AppStore from '../store/AppStore';
+import apiService from '../services/apiService';
 
 /* CSS rules */
 
@@ -47,12 +48,17 @@ const formContainer = css`
 const formImg = css`
   height: 200px;
   width: 140px;
+  filter: grayscale(100%);
+  :hover {
+    filter: grayscale(0%);
+  }
 `;
 
 const formP = css`
   font-family: 'Verdana';
   font-size: 13px;
   color: #595959;
+  cursor: pointer;
 `;
 
 const formH3 = css`
@@ -67,11 +73,10 @@ const loadingP = css`
 /* End of CSS rules */
 
 async function getShows() {
-  const shows = await fetch('https://api.infinum.academy/api/shows')
-    .then((response) => response.json())
+  const shows = await apiService.get('shows')
     .then(({ data = [] }) => data);
 
-  appStore.shows.replace(shows);
+  AppStore.shows.replace(shows);
 }
 
 function Shows() {
@@ -87,10 +92,14 @@ function Shows() {
         <div css={formContainer}>
           {loading && <p css={loadingP}>Shows are loading...</p>}
           {
-            appStore.shows.map(({ _id, title, imageUrl }) => (
+            AppStore.shows.map(({ _id, title, imageUrl }) => (
               <div key={_id}>
                 <img src={`https://api.infinum.academy/${imageUrl}`} alt='show covers' css={formImg} />
-                <p css={formP}>{title}</p>
+                <div>
+                  <Link href={`/episodes?id=${_id}`}>
+                    <a css={formP}>{title}</a>
+                  </Link>
+                </div>
               </div>
             ))
           }
